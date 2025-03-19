@@ -6,7 +6,8 @@ const rateLimit = require('express-rate-limit')
 // const helmet = require('helmet')
 const mongoSanitize = require('express-mongo-sanitize')
 const cookieParser = require('cookie-parser')
-// const xss = require('xss-clean')
+const xss = require('xss-clean')
+const compression = require('compression')
 const hpp = require('hpp')
 const cors = require('cors');
 
@@ -65,12 +66,22 @@ app.use(cookieParser())//this will parse the data frome the cookie
 app.use(mongoSanitize())
 
 //data senetization form xss
-// app.use(xss())
+app.use(xss())
 
 //prevent or take care of parameter palution..
 app.use(hpp({
-   whitelist: ['duration', 'price']//this will worke on those fields which is in arry
+   whitelist: [
+      'duration',
+      'price',
+      'ratingsQuantity',
+      'ratingsAverage',
+      'maxGroupSize',
+      'difficluty'
+   ]//this will worke on those fields which is in arry
 }))
+
+//a middleware for file compression
+app.use(compression())
 
 app.use((req, res, next) => {
    req.requestTime = new Date().toISOString()

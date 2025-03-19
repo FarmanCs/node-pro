@@ -29,7 +29,7 @@ exports.uploadTourImages = upload.fields([
 // upload.array('name', 5)//for same but more than one image
 //middleware to handle the req.files for uploading imags
 exports.resizeTourImages = tryCatchError(async (req, res, next) => {
-   console.log(req.files);
+   // console.log(req.files);
    if (!req.files.imageCover || !req.files.images) return next()
    // 1) coverImage process
    // const imageCoverFilename = `tour- ${req.params.id}-${Date.now()}-cover-jpeg`
@@ -165,7 +165,7 @@ exports.getToursWithin = tryCatchError(async (req, res, next) => {
    if (!lat || !lng) {
       next(new AppError("please provide latitude and langitude ", 404))
    }
-   console.log(distance, latlng, unit);
+   // console.log(distance, latlng, unit);
 
    const Tour = await tourModle.find({
       startLocation: { $geoWithin: { $centerSphere: [[lng, lat], radius] } }

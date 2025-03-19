@@ -60,7 +60,7 @@ const filterObj = (obj, ...allowedFields) => {
 //get user by id
 exports.creatUser = tryCatchError(async (req, res, next) => {
 
-   console.log("this rout does not working use singup insted");
+   // console.log("this rout does not working use singup insted");
 
 
    res.status(200).json({
@@ -70,7 +70,7 @@ exports.creatUser = tryCatchError(async (req, res, next) => {
 })
 //update the current user (updateMe)
 exports.updateMe = tryCatchError(async (req, res, next) => {
-   console.log(req.file);
+   // console.log(req.file);
 
    // 1 create error if user post password or data
    if (req.body.password || req.body.passwordConfirm) {

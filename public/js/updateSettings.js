@@ -25,8 +25,9 @@ import { showAlert } from "./alert"
 export const updateSettings = async (data, type) => {
    try {
       const url = type === 'password'
-         ? 'http://127.0.0.1:7070/api/v1/users/update-Password'
-         : 'http://127.0.0.1:7070/api/v1/users/update-me'
+         //same on other pages, it is for hosting project
+         ? '/api/v1/users/update-Password'
+         : '/api/v1/users/update-me'
 
       const result = await axios({
          method: 'PATCH',

@@ -61,7 +61,7 @@ exports.getMyTours = tryCatchError(async (req, res, next) => {
 })
 
 exports.updateUserData = tryCatchError(async (req, res, next) => {
-   console.log('updateing users:', req.body);
+   // console.log('updateing users:', req.body);
    const updatedUser = await userModel.findByIdAndUpdate(req.user.id,
       {
          name: req.body.name,
